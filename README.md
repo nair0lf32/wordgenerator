@@ -23,6 +23,7 @@ Random mode will get you in little time:
 
 Custom mode will get you:
 - A password/directory bruteforce wordlist for a specific target
+- Anything you want if you give it the right data (enumeration skills much)
 
 ## Usage
 
