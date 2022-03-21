@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 import itertools
 from termcolor import colored
 import time
@@ -39,7 +41,6 @@ alpha_lower = "abcdefghijklmopqrstuvwxyz"
 alpha_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 numeric = "0123456789"
 special = " `èéà@ç-/\\:#{}[]()'&*`^$!."
-
 
 # main loop menu
 def menu():
