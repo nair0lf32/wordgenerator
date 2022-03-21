@@ -40,10 +40,8 @@ the longer the length, the bigger the output file is
 (we are talking about either kilobytes or Terabytes here)
 
 
-
 ## Requirements
-- Python 3
-
+- Python 3 (Tested with python 3.9)
 
 ## Legal Disclaimer
 
