@@ -25,9 +25,17 @@ Custom mode will get you:
 - A password/directory bruteforce wordlist for a specific target
 - Anything you want if you give it the right data (enumeration skills much)
 
+Note: The script is very simple and should not be used for very complex generations ( time and memory complexity )
+
+performance could be improved by using multithreading (but python might not be the best for that)
+
 ## Usage
 
-Run this script with python:
+First install requirements (optional, but gives a prettier output)
+
+```$ pip install -r requirements.txt```
+
+Run this script with python (python3 preferred but python2 is also supported):
 
 ```$ python wordgen.py```
 
@@ -41,7 +49,10 @@ the longer the length, the bigger the output file is
 
 
 ## Requirements
-- Python 3 (Tested with python 3.9)
+
+- Python 3 (Tested with python 3.9) or python 2
+- termcolor (optional but looks nicer)
+- colorama (for some OS terminals, also optional)
 
 ## Legal Disclaimer
 
