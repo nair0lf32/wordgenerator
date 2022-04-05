@@ -7,9 +7,7 @@ import time
 init(autoreset=True)
 print(colored('''
 #########################################################################################################
-
-Made By:   florian E. (nairolf32)          
-     
+Made By:   florian E. (nairolf32)             
  _     _ _______ ______   ______  _______ _______ __    _ _______ ______   _______ _______ _______ ______   
 | | _ | |       |    _ | |      ||       |       |  |  | |       |    _ | |   _   |       |       |    _ |  
 | || || |   _   |   | || |  _    |    ___|    ___|   |_| |    ___|   | || |  |_|  |_     _|   _   |   | ||  
@@ -123,16 +121,21 @@ def menu():
 
         # custom mode menu
         elif operation_choice == 'C':
-            print(colored("\nThis mode is targeted and generate a wordlist based on your given words or numbers."
-                          "\nAlso this mode can take a very long time and make a very big file, But is more concise!"
-                          "\nYou can prepare your data accordingly to your expected results", 'red'))
-            combinations = []
-            print(colored("\nThis mode takes a single input but it can be many words or numbers", 'green'))
-            print(colored("\nInstead of asking them one by one, it takes all you information at once", 'green'))
+            print(colored('''
+            \nThis mode is targeted and generate a wordlist based on your given words or numbers.
+            \nAlso this mode can take a very long time and make a very big file, But is more concise!
+            \nYou can prepare your data accordingly to your expected results
+            ''', 'red'))
+            print(colored('''
+            \nThis mode takes a single input but it can be many words or numbers
+            \nInstead of asking them one by one, it takes all you information at once
+            ''', 'green'))
             print(colored("\nSeparate each data with a comma", 'red'))
-            print(colored("\nIt can be usernames, birthdate , ages, phone numbers...", 'green'))
-            print(colored("\nyou can even enter single characters, but use COMMA for separation!", 'green'))
-            print(colored("\nexample: john,doe,1990,23,bonnie123,1,@,#,bonnie", 'green'))
+            print(colored('''
+            \nIt can be usernames, birthdate , ages, phone numbers...
+            \nyou can even enter single characters, but use COMMA for separation!
+            \nexample: john,doe,1990,23,bonnie123,1,@,#,bonnie
+            ''', 'green'))
             print(colored("\nEnter your data below", 'green'))
             try:
                 data = str(input(cprint("\ndata : ", 'magenta')))
