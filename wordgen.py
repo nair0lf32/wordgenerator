@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 import itertools
-from termcolor import colored, cprint
-from colorama import init
 import time
+from termcolor import colored
+from colorama import init
 
 init(autoreset=True)
 print(colored('''
@@ -44,17 +44,16 @@ special = " `èéà@ç-/\\:#{}[]()'&*`^$!."
 
 # main loop menu
 def menu():
-    global min_length, max_length
-    print("Welcome to my custom wordlist generator! \n")
+    print("Welcome to my custom wordlist generator! ")
     while True:
         time.sleep(1)
-        print(colored("\nWhat do you need? please Enter the letter corresponding to your choice: \n\n"
-                      "Random list (R) - custom list (C) - Help (H)- Quit (Q) \n", 'green'))
-        operation_choice = str(input(cprint("choice: ", 'magenta')).strip().capitalize())
+        print(colored("\nPlease Enter the letter corresponding to your choice: "
+                      "\nRandom list = R| custom list = C| Help = H| Quit = Q", 'green'))
+        operation_choice = str(input("choice: ").strip().capitalize())
         # exit
         if operation_choice == 'Q':
+            print(colored("Goodbye !", 'red'))
             time.sleep(1)
-            print(colored("\nGoodbye !", 'red'))
             break
         # help menu
         elif operation_choice == 'H':
@@ -63,23 +62,23 @@ def menu():
         elif operation_choice == 'R':
             print(colored("\nPlease use this mode with caution. The length range should be limited to a maximum of 16."
                           "\nEven this value will take a very long time and make a very big wordlist! use custom mode,"
-                          "\nfor a better control, thus a lighter and more precise generation", 'red'))
+                          "\nFor a better control, thus a lighter and more precise generation", 'red'))
             print(colored("\nEnter a minimal length", 'green'))
             try:
-                min_length = int(input(cprint("\nmin_length (1-16) : ", 'magenta')))
+                min_length = int(input("min_length (1-16) : "))
             except ValueError:
                 print(colored("Invalid input!", 'red'))
                 break
-            print(colored("\nEnter a maximal length", 'green'))
+            print(colored("Enter a maximal length", 'green'))
             try:
-                max_length = int(input(cprint("\nmax_length (1-16) : ", 'magenta')))
+                max_length = int(input("max_length (1-16) : "))
             except ValueError:
                 print(colored("Invalid input!", 'red'))
                 break
             combinations = []
-            print(colored("\ndefault base set is empty. Do you want to add alphabet characters? (Y/N)", 'green'))
+            print(colored("default base set is empty. Do you want to add alphabet characters? (Y/N)", 'green'))
             try:
-                choice = str(input(cprint("\nchoice : ", 'magenta')).strip().capitalize())
+                choice = str(input("choice : ").strip().capitalize())
             except ValueError:
                 print(colored("Invalid input!", 'red'))
                 break
@@ -87,9 +86,9 @@ def menu():
                 combinations[:] += alpha_lower
             else:
                 pass
-            print(colored("\nDo you want to add uppercase characters? (Y/N)", 'green'))
+            print(colored("Do you want to add uppercase characters? (Y/N)", 'green'))
             try:
-                choice = str(input(cprint("\nchoice : ", 'magenta')).strip().capitalize())
+                choice = str(input("choice : ").strip().capitalize())
             except ValueError:
                 print(colored("Invalid input!", 'red'))
                 break
@@ -97,9 +96,9 @@ def menu():
                 combinations[:] += alpha_upper
             else:
                 pass
-            print(colored("\nAdd numbers? (Y/N)", 'green'))
+            print(colored("Add numbers? (Y/N)", 'green'))
             try:
-                choice = str(input(cprint("\nchoice : ", 'magenta')).strip().capitalize())
+                choice = str(input("choice : ").strip().capitalize())
             except ValueError:
                 print(colored("Invalid input!", 'red'))
                 break
@@ -107,9 +106,9 @@ def menu():
                 combinations[:] += numeric
             else:
                 pass
-            print(colored("\nWhat about special characters? (Y/N)", 'green'))
+            print(colored("What about special characters? (Y/N)", 'green'))
             try:
-                choice = str(input(cprint("\nchoice : ", 'magenta')).strip().capitalize())
+                choice = str(input("choice : ").strip().capitalize())
             except ValueError:
                 print(colored("Invalid input!", 'red'))
                 break
@@ -130,7 +129,7 @@ def menu():
             \nThis mode takes a single input but it can be many words or numbers
             \nInstead of asking them one by one, it takes all you information at once
             ''', 'green'))
-            print(colored("\nSeparate each data with a comma", 'red'))
+            print(colored("Separate each data with a comma", 'red'))
             print(colored('''
             \nIt can be usernames, birthdate , ages, phone numbers...
             \nyou can even enter single characters, but use COMMA for separation!
@@ -138,19 +137,19 @@ def menu():
             ''', 'green'))
             print(colored("\nEnter your data below", 'green'))
             try:
-                data = str(input(cprint("\ndata : ", 'magenta')))
+                data = str(input("Data : "))
             except ValueError:
                 print(colored("Invalid input!", 'red'))
                 break
             combinations = data.split(sep=',')
             generate_custom(combinations)
         else:
-            print("Invalid choice! please try again!")
+            print(colored("Invalid choice! please try again!"), 'red')
 
 
 # random mode generator with itertools.product
 def generate_random(min_length, max_length, combinations):
-    global words_number
+    words_number = 0
     start_time = time.time()
     with open("./output/random_wordlist.txt", 'r+') as file:
         file.truncate(0)
@@ -164,15 +163,15 @@ def generate_random(min_length, max_length, combinations):
                 for count, line in enumerate(file):
                     pass
             words_number = count + 1
-    stats = "\n{0} words generated in {1} seconds".format(words_number, (round((time.time() - start_time), 2)))
+    stats = "{0} words generated in {1} seconds".format(words_number, (round((time.time() - start_time), 2)))
     print(colored(stats, 'red'))
-    print(colored("\nYour generated wordlist file can be found in the output folder", 'red'))
+    print(colored("Your generated wordlist file can be found in the output folder", 'red'))
     time.sleep(1)
 
 
 # Custom mode generator with itertools.permutations
 def generate_custom(combinations):
-    global words_count
+    words_count = 0
     start_time = time.time()
     with open("./output/custom_wordlist.txt", 'r+') as file:
         file.truncate(0)
@@ -187,9 +186,9 @@ def generate_custom(combinations):
                 for count, line in enumerate(file):
                     pass
             words_count = count + 1
-    stats = "\n{0} words generated in {1} seconds".format(words_count, (round((time.time() - start_time), 2)))
+    stats = "{0} words generated in {1} seconds".format(words_count, (round((time.time() - start_time), 2)))
     print(colored(stats, 'red'))
-    print(colored("\nYour generated wordlist file can be found in the output folder", 'red'))
+    print(colored("Your generated wordlist file can be found in the output folder", 'red'))
     time.sleep(1)
 
 
